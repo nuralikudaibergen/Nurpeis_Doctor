@@ -1,10 +1,5 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/dr_nurpeistulezhanov.html" }
-  ],
-  "env": {
-    "BOT_TOKEN": "@bot_token",
-    "ADMIN_ID": "@admin_id",
-    "OPENAI_API_KEY": "@openai_api_key"
-  }
+  ]
 }
