@@ -786,6 +786,13 @@ async function submitReview() {
 // OpenAI API Key (из window.APP_CONFIG или напрямую)
 const OPENAI_API_KEY = window.APP_CONFIG?.OPENAI_API_KEY || '';
 
+// Отладочная информация - убрать после тестирования
+console.log('APP_CONFIG:', window.APP_CONFIG);
+console.log('OPENAI_API_KEY:', OPENAI_API_KEY ? 'установлен' : 'ПУСТОЙ!');
+if (!OPENAI_API_KEY) {
+  alert('Ошибка: API ключ не загружен! Проверьте настройки.');
+}
+
 function toggleChat() {
   document.getElementById('chatBox').classList.toggle('open');
 }
@@ -861,6 +868,7 @@ ${Object.entries(services).map(([name, price]) => `- ${name}: ${price}`).join('\
 6. Если клиент хочет записаться - направляй его к форме записи на сайте`;
 
   try {
+    console.log('Отправка запроса к OpenAI...');
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -877,16 +885,21 @@ ${Object.entries(services).map(([name, price]) => `- ${name}: ${price}`).join('\
       })
     });
 
+    console.log('Ответ от OpenAI:', response.status, response.statusText);
     hideTyping();
 
     if (response.ok) {
       const data = await response.json();
+      console.log('Данные ответа:', data);
       const reply = data.choices[0].message.content;
       addMessage(reply, false);
     } else {
+      const errorText = await response.text();
+      console.log('Ошибка API:', errorText);
       addMessage('Извините, произошла ошибка. Попробуйте позвонить нам: 8 705 365 72 85 или написать в WhatsApp.', false);
     }
   } catch (error) {
+    console.log('Ошибка запроса:', error);
     hideTyping();
     addMessage('Извините, произошла ошибка. Напишите нам в WhatsApp: 8 705 365 72 85', false);
   }
