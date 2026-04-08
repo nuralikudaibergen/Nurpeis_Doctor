@@ -1,0 +1,5 @@
+# Local config files (not pushed to GitHub)
+.env
+.env.local
+config.js
+config-example.js

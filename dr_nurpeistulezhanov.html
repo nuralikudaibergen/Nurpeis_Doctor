@@ -597,9 +597,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Telegram Bot Token
-const BOT_TOKEN = '8756592309:AAHBpGVexgf0B7c_dZlyrko9ESwebzJmxZ8';
-const ADMIN_ID = '1924354010';
+// === НАСТРОЙКИ (заполните в Vercel Dashboard: Settings → Environment Variables) ===
+// Или создайте файл config.js в корне проекта с содержимым:
+// window.APP_CONFIG = { BOT_TOKEN: '...', ADMIN_ID: '...', OPENAI_API_KEY: '...' };
+
+const BOT_TOKEN = window.APP_CONFIG?.BOT_TOKEN || '';
+const ADMIN_ID = window.APP_CONFIG?.ADMIN_ID || '';
 
 // Отправка в Telegram
 async function sendToTelegram(text) {
@@ -772,8 +775,8 @@ async function submitReview() {
 </div>
 
 <script>
-// Вставьте ваш OpenAI API ключ здесь
-const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY';
+// OpenAI API Key (из window.APP_CONFIG или напрямую)
+const OPENAI_API_KEY = window.APP_CONFIG?.OPENAI_API_KEY || '';
 
 function toggleChat() {
   document.getElementById('chatBox').classList.toggle('open');
