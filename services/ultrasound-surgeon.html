@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>УЗИ + консультация хирурга — Nurpeis Doctor</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#062c73;--blue2:#0a3d9e;--orange:#e87722;--light:#f5f5f5;--white:#fff;--text:#333;--muted:#666;--border:#ddd}
+body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--white)}
+.topbar{background:var(--blue);padding:6px 30px;display:flex;justify-content:flex-end;align-items:center;gap:16px}
+.topbar a{color:rgba(255,255,255,0.8);font-size:12px;text-decoration:none}
+.social-icons{display:flex;gap:8px}
+.social-icons a{width:24px;height:24px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,0.8);text-decoration:none}
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 30px;display:flex;justify-content:space-between;align-items:center}
+.logo{padding:12px 0}
+.logo-box{background:var(--blue);color:#fff;font-size:16px;font-weight:700;letter-spacing:1px;padding:8px 16px;border-radius:2px;display:inline-block}
+.logo-sub{font-size:9px;letter-spacing:2px;color:var(--blue);text-transform:uppercase;display:block;margin-top:3px}
+.nav-links{display:flex;gap:0}
+.nav-links a{color:var(--text);text-decoration:none;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:20px 14px;display:block;border-bottom:3px solid transparent;transition:all 0.2s}
+.nav-links a:hover{color:var(--blue);border-bottom-color:var(--blue)}
+.breadcrumb{padding:12px 30px;background:var(--light);font-size:12px}
+.breadcrumb a{color:var(--blue);text-decoration:none}
+.breadcrumb span{color:var(--muted);margin:0 6px}
+.page-header{background:linear-gradient(rgba(6,44,115,0.85),rgba(6,44,115,0.95)),url('https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1200&q=80') center/cover;padding:50px 30px;color:#fff}
+.page-header h1{font-size:28px;font-weight:700;margin-bottom:8px}
+.page-header p{font-size:14px;opacity:0.85}
+.price-box{background:var(--orange);color:#fff;padding:12px 20px;border-radius:4px;display:inline-block;margin-top:16px}
+.price-box .price{font-size:24px;font-weight:700}
+.price-box .label{font-size:11px;text-transform:uppercase;letter-spacing:1px;opacity:0.9}
+.content{padding:40px 30px;max-width:900px;margin:0 auto}
+.section{margin-bottom:32px}
+.section h2{font-size:18px;font-weight:700;color:var(--blue);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--blue);display:inline-block}
+.section p{font-size:14px;line-height:1.75;color:var(--text);margin-bottom:12px}
+.benefits{list-style:none}
+.benefits li{padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.6}
+.benefits li:before{content:"✓";color:var(--blue);font-weight:700;flex-shrink:0}
+.prep-list{list-style:none;background:var(--light);padding:20px;border-radius:4px}
+.prep-list li{padding:8px 0;font-size:14px;display:flex;align-items:center;gap:10px}
+.prep-list li:before{content:"•";color:var(--blue);font-size:18px}
+.combo-box{background:var(--light);padding:20px;border-radius:4px;display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+.combo-item{text-align:center}
+.combo-item h4{font-size:13px;color:var(--blue);margin-bottom:8px}
+.combo-item .price{font-size:20px;font-weight:700;color:var(--orange)}
+.btn-primary{background:var(--blue);color:#fff;border:none;padding:12px 28px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;border-radius:3px;text-decoration:none;display:inline-block;margin-top:16px;transition:background 0.2s}
+.btn-primary:hover{background:var(--blue2)}
+.contact-section{background:var(--light);padding:30px;text-align:center;border-radius:4px;margin-top:40px}
+.contact-section h3{font-size:16px;color:var(--blue);margin-bottom:16px}
+.contact-item{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;font-size:14px}
+.contact-item a{color:var(--blue);text-decoration:none}
+footer{background:var(--blue);padding:20px 30px;text-align:center;color:rgba(255,255,255,0.7);font-size:12px;margin-top:40px}
+@media(max-width:600px){nav{flex-wrap:wrap;padding:0 16px}.nav-links{display:none;width:100%;flex-direction:column;border-top:1px solid var(--border)}.nav-links.open{display:flex}.page-header{padding:30px 16px}.content{padding:24px 16px}.combo-box{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="social-icons"><a href="https://www.instagram.com/dr_nurpeistulezhanov" target="_blank">in</a><a href="https://wa.me/77053657285" target="_blank">wa</a></div>
+  <a href="tel:+77053657285">8 705 365 72 85</a>
+</div>
+<nav>
+  <div class="logo"><a href="../dr_nurpeistulezhanov.html" style="text-decoration:none"><div class="logo-box">NURPEIS DOCTOR</div><span class="logo-sub">Медицинский центр</span></a></div>
+  <div class="nav-links"><a href="../dr_nurpeistulezhanov.html#about">О клинике</a><a href="../dr_nurpeistulezhanov.html#services">Услуги</a><a href="../dr_nurpeistulezhanov.html#doctors">Врачи</a><a href="../dr_nurpeistulezhanov.html#contact">Контакты</a></div>
+</nav>
+<div class="breadcrumb"><a href="../dr_nurpeistulezhanov.html">Главная</a><span>›</span><a href="../dr_nurpeistulezhanov.html#services">Услуги</a><span>›</span>УЗИ + консультация хирурга</div>
+<div class="page-header">
+  <h1>УЗИ + консультация хирурга</h1>
+  <p>Комплексная услуга: ультразвуковое исследование и консультация врача</p>
+  <div class="price-box"><div class="label">Стоимость услуги</div><div class="price">12 000 ₸</div></div>
+</div>
+<div class="content">
+  <div class="section"><h2>Описание услуги</h2><p>УЗИ + консультация хирурга — это комплексная услуга, которая включает проведение ультразвукового исследования и последующую консультацию хирурга. Это позволяет получить полную картину состояния здоровья и сразу получить профессиональные рекомендации.</p><p>Вам не нужно записываться на два приёма — всё делается в рамках одного визита. Врач проведёт УЗИ, изучит результаты и даст заключение с рекомендациями по лечению.</p></div>
+  <div class="section"><h2>Что входит в услугу</h2><div class="combo-box"><div class="combo-item"><h4>УЗИ (любой области)</h4><p>Ультразвуковое исследование</p><div class="price">6 000 ₸</div></div><div class="combo-item"><h4>Консультация хирурга</h4><p>Врач высшей категории</p><div class="price">7 000 ₸</div></div></div><p style="margin-top:16px;text-align:center;font-size:14px"><strong>Комплексная цена: 12 000 ₸</strong> (экономия 1 000 ₸)</p></div>
+  <div class="section"><h2>Преимущества комплексной услуги</h2><ul class="benefits"><li>Экономия времени — один визит вместо двух</li><li>Врач сразу интерпретирует результаты УЗИ</li><li>Получение рекомендаций в день обращения</li><li>Возможность сразу назначить лечение</li><li>Удобство для пациента</li></ul></div>
+  <div class="section"><h2>Подготовка</h2><ul class="prep-list"><li>Не есть за 6-8 часов до исследования (для УЗИ брюшной полости)</li><li>Принести результаты предыдущих обследований</li><li>Подготовить список вопросов к врачу</li></ul></div>
+  <div class="contact-section">
+    <div class="contact-item">
+      <strong>Карта:</strong> <a href="https://2gis.kz/turkestan/geo/70000001090887314" target="_blank" style="color:#FF6B00;font-weight:600">Открыть на 2GIS</a>
+    </div><h3>Записаться на приём</h3><div class="contact-item"><strong>Телефон:</strong> <a href="tel:+77053657285">8 705 365 72 85</a></div><div class="contact-item"><strong>WhatsApp:</strong> <a href="https://wa.me/77053657285">8 705 365 72 85</a></div><div class="contact-item"><strong>Адрес:</strong> г. Туркестан, ЖК Арман 37/1</div><a href="../dr_nurpeistulezhanov.html#contact" class="btn-primary">Записаться на приём</a></div>
+</div>
+<footer>&copy; 2025 Nurpeis Doctor. Медицинский центр г. Туркестан.</footer>
+</body>
+</html>

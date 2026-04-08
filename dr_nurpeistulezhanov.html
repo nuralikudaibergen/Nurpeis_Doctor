@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nurpeis Doctor — Медицинский центр г. Туркестан</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#062c73;
+  --blue2:#0a3d9e;
+  --orange:#e87722;
+  --light:#f5f5f5;
+  --white:#fff;
+  --text:#333;
+  --muted:#666;
+  --border:#ddd;
+}
+body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--white)}
+
+/* TOP BAR */
+.topbar{background:var(--blue);padding:6px 30px;display:flex;justify-content:flex-end;align-items:center;gap:16px}
+.topbar a{color:rgba(255,255,255,0.8);font-size:12px;text-decoration:none;display:flex;align-items:center;gap:4px}
+.topbar a:hover{color:#fff}
+.social-icons{display:flex;gap:8px}
+.social-icons a{width:24px;height:24px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(255,255,255,0.8);text-decoration:none}
+.social-icons a:hover{background:rgba(255,255,255,0.15);color:#fff}
+.lang-btn{background:transparent;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);padding:3px 10px;font-size:12px;cursor:pointer;border-radius:3px;font-family:inherit}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 30px;display:flex;justify-content:space-between;align-items:center}
+.logo{padding:12px 0}
+.logo-box{background:var(--blue);color:#fff;font-size:16px;font-weight:700;letter-spacing:1px;padding:8px 16px;border-radius:2px;display:inline-block}
+.logo-sub{font-size:9px;letter-spacing:2px;color:var(--blue);text-transform:uppercase;display:block;margin-top:3px;text-align:center}
+.nav-links{display:flex;gap:0}
+.nav-links a{color:#fff;text-decoration:none;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;padding:12px 20px;display:inline-block;margin:8px 4px;border-radius:25px;background:linear-gradient(135deg,var(--blue) 0%,var(--blue2) 100%);transition:all 0.3s ease;box-shadow:0 2px 8px rgba(6,44,115,0.3)}
+.nav-links a:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(6,44,115,0.4);background:linear-gradient(135deg,var(--blue2) 0%,#0a5ed9 100%)}
+.nav-toggler{display:none;background:none;border:1px solid var(--border);padding:6px 10px;cursor:pointer;border-radius:3px;font-size:18px}
+
+/* HERO FORM SECTION */
+.hero-section{display:grid;grid-template-columns:58% 42%}
+.hero-image{background:linear-gradient(rgba(6,44,115,0.35),rgba(6,44,115,0.55)),url('https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=900&q=80') center/cover;min-height:520px;position:relative;display:flex;align-items:flex-end}
+.hero-label{padding:30px;color:#fff}
+.hero-label h2{font-size:22px;font-weight:700;text-transform:uppercase;margin-bottom:8px;line-height:1.3}
+.hero-label p{font-size:13px;opacity:0.85}
+.form-panel{background:var(--white);padding:28px;border-left:1px solid var(--border)}
+.form-panel h3{font-size:15px;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--blue);display:inline-block}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.form-row.full{grid-template-columns:1fr}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{font-size:11px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:0.3px}
+.form-group input,
+.form-group select,
+.form-group textarea{border:1px solid var(--border);padding:7px 10px;font-size:13px;color:var(--text);outline:none;border-radius:3px;font-family:inherit;transition:border-color 0.2s}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:var(--blue)}
+.form-group textarea{resize:none;height:64px}
+.check-row{display:flex;align-items:flex-start;gap:8px;margin-top:12px}
+.check-row label{font-size:11px;color:var(--muted);line-height:1.5}
+.check-row a{color:var(--blue)}
+.btn-orange{background:var(--orange);color:#fff;border:none;padding:9px 22px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;border-radius:3px;margin-top:12px;width:100%;font-family:inherit;transition:background 0.2s}
+.btn-orange:hover{background:#cf6510}
+
+/* QUICK LINKS */
+.quicklinks{display:grid;grid-template-columns:repeat(3,1fr);background:var(--blue2)}
+.qlink{display:flex;align-items:center;gap:12px;padding:16px 24px;border-right:1px solid rgba(255,255,255,0.1);color:#fff;text-decoration:none;transition:background 0.2s}
+.qlink:hover{background:rgba(255,255,255,0.1)}
+.qlink:last-child{border-right:none}
+.qlink svg{width:34px;height:34px;flex-shrink:0;opacity:0.9}
+.qlink-text{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+
+/* SECTIONS */
+.section-light{background:var(--light);padding:44px 30px}
+.section-white{background:var(--white);padding:44px 30px}
+.inner{max-width:1100px;margin:0 auto}
+.two-col{display:grid;grid-template-columns:2fr 1fr;gap:32px;align-items:start}
+.section-title{font-size:16px;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--blue);display:inline-block}
+.body-text{font-size:13px;line-height:1.75;color:var(--text);margin-bottom:10px}
+.btn-secondary{display:inline-block;padding:8px 20px;border:2px solid var(--blue);color:var(--blue);font-size:12px;font-weight:700;text-transform:uppercase;text-decoration:none;border-radius:3px;margin-top:10px;transition:all 0.2s}
+.btn-secondary:hover{background:var(--blue);color:#fff}
+.feat-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
+.feat-icon{font-size:22px;color:var(--blue);flex-shrink:0;margin-top:2px}
+.feat-text{font-size:13px;line-height:1.55;color:var(--text);padding-top:3px}
+
+/* STATS BAR */
+.stats-bar{background:var(--blue);padding:26px 30px}
+.stats-inner{display:grid;grid-template-columns:repeat(5,1fr);max-width:1100px;margin:0 auto}
+.stat-item{text-align:center;border-right:1px solid rgba(255,255,255,0.2);padding:8px 4px}
+.stat-item:last-child{border-right:none}
+.stat-num{font-size:28px;font-weight:700;color:#fff;display:block}
+.stat-label{font-size:11px;color:rgba(255,255,255,0.7);margin-top:3px;display:block}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:20px 16px;text-align:center;text-decoration:none;color:var(--text);transition:box-shadow 0.2s,border-color 0.2s;display:block}
+.service-card:hover{border-color:var(--blue);box-shadow:0 4px 14px rgba(6,44,115,0.1)}
+.service-card h3{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.service-card p{font-size:11px;line-height:1.65;color:var(--muted)}
+.center-btn{text-align:center;margin-top:24px}
+
+/* HOSPITALS / ABOUT BLOCKS */
+.img-text-block{display:grid;grid-template-columns:1fr 2fr;gap:28px;align-items:start;margin-bottom:8px}
+.img-text-block img{width:100%;border-radius:4px}
+.img-placeholder{background:var(--border);border-radius:4px;height:200px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;text-align:center}
+
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.review-card{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:20px}
+.review-stars{color:var(--orange);font-size:14px;margin-bottom:10px;letter-spacing:2px}
+.review-text{font-size:13px;line-height:1.7;color:var(--text);margin-bottom:12px;font-style:italic}
+.review-author{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.contact-item{display:flex;gap:14px;margin-bottom:20px;align-items:flex-start}
+.contact-icon{width:38px;height:38px;background:var(--blue);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:#fff}
+.contact-detail h4{font-size:11px;font-weight:700;text-transform:uppercase;color:var(--blue);margin-bottom:3px;letter-spacing:0.5px}
+.contact-detail p{font-size:13px;color:var(--text);line-height:1.5}
+
+/* FOOTER SITEMAP */
+.footer-sitemap{background:var(--blue);padding:32px 30px}
+.sitemap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:0 auto}
+.sitemap-col h4{font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.2)}
+.sitemap-col a{display:block;font-size:12px;color:rgba(255,255,255,0.7);text-decoration:none;padding:3px 0;line-height:1.6}
+.sitemap-col a:hover{color:var(--orange)}
+.footer-bottom{background:#051f52;padding:14px 30px;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.5)}
+.footer-logo-text{font-size:13px;font-weight:700;letter-spacing:1px;color:#fff}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{flex-wrap:wrap;padding:0 16px}
+  .nav-toggler{display:block;margin:12px 0}
+  .nav-links{display:none;width:100%;flex-direction:column;border-top:1px solid var(--border);padding:12px 0;gap:8px;align-items:center}
+  .nav-links.open{display:flex}
+  .nav-links a{margin:4px 0;padding:10px 24px;font-size:11px}
+  .hero-section{grid-template-columns:1fr}
+  .hero-image{min-height:260px}
+  .quicklinks{grid-template-columns:1fr}
+  .qlink{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1)}
+  .two-col,.contact-grid,.img-text-block{grid-template-columns:1fr}
+  .services-grid,.reviews-grid{grid-template-columns:1fr 1fr}
+  .stats-inner{grid-template-columns:repeat(3,1fr)}
+  .sitemap-grid{grid-template-columns:1fr 1fr}
+  .topbar{padding:6px 16px}
+  .section-light,.section-white{padding:32px 16px}
+  .footer-sitemap{padding:24px 16px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center;padding:14px 16px}
+}
+@media(max-width:500px){
+  .services-grid,.reviews-grid,.sitemap-grid,.stats-inner{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .logo-box{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="social-icons">
+    <a href="https://wa.me/77053657285" target="_blank" title="WhatsApp">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+  <a href="tel:+77053657285" style="color:rgba(255,255,255,0.8);font-size:12px;text-decoration:none">8 705 365 72 85</a>
+</div>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">
+    <div class="logo-box">NURPEIS DOCTOR</div>
+    <span class="logo-sub">Медицинский центр · Туркестан</span>
+  </div>
+  <button class="nav-toggler" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <div class="nav-links" style="display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:center">
+    <a href="#about">О клинике</a>
+    <a href="#services">Услуги</a>
+    <a href="#doctors">Врачи</a>
+    <a href="#contact">Контакты</a>
+  </div>
+</nav>
+
+<!-- HERO + FORM -->
+<div class="hero-section">
+  <div class="hero-image">
+    <div class="hero-label">
+      <h2>Nurpeis Doctor — Медицинский центр в Туркестане</h2>
+      <p>Качественные медицинские услуги &middot; Современное оборудование &middot; Опытные специалисты</p>
+    </div>
+  </div>
+  <form class="form-panel" id="appointment-form" onsubmit="submitForm(event)">
+    <h3>Записаться на приём</h3>
+    <div class="form-row">
+      <div class="form-group"><label>Имя</label><input type="text" id="form-name" placeholder="Ваше имя" required></div>
+      <div class="form-group"><label>Телефон</label><input type="tel" id="form-phone" placeholder="+7 (XXX) XXX-XX-XX" required></div>
+    </div>
+    <div class="form-row full">
+      <div class="form-group">
+        <label>Услуга</label>
+        <select id="form-service" required>
+          <option value="">Выберите услугу</option>
+          <option>Промывание желчного пузыря</option>
+          <option>VIP обрезание</option>
+          <option>Консультация хирурга</option>
+          <option>УЗИ комплекс</option>
+          <option>УЗИ + хирург</option>
+          <option>УЗИ гепатобилиопанкреатической области</option>
+          <option>УЗИ почек</option>
+          <option>УЗИ мочевого пузыря</option>
+          <option>УЗИ простаты</option>
+          <option>УЗИ мошонки</option>
+          <option>УЗИ щитовидной железы</option>
+          <option>УЗИ мягких тканей</option>
+          <option>Снятие швов под контролем УЗИ</option>
+          <option>Снятие швов</option>
+          <option>Удаление жидкости под УЗИ</option>
+          <option>Вросший ноготь</option>
+          <option>Перевязка чистой раны</option>
+          <option>Перевязка загрязнённой раны</option>
+          <option>Подрезание уздечки языка</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Дата</label>
+        <input type="date" id="form-date" required>
+      </div>
+      <div class="form-group">
+        <label>Время</label>
+        <select id="form-time" required>
+          <option value="">Выберите время</option>
+          <option value="7:00">7:00</option>
+          <option value="7:30">7:30</option>
+          <option value="8:00">8:00</option>
+          <option value="8:30">8:30</option>
+          <option value="9:00">9:00</option>
+          <option value="9:30">9:30</option>
+          <option value="10:00">10:00</option>
+          <option value="10:30">10:30</option>
+          <option value="11:00">11:00</option>
+          <option value="11:30">11:30 (только Сб)</option>
+          <option value="12:00">12:00 (только Сб)</option>
+          <option value="12:30">12:30 (только Сб)</option>
+          <option value="13:00">13:00 (только Сб)</option>
+          <option value="13:30">13:30 (только Сб)</option>
+          <option value="14:00">14:00 (только Сб)</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row full">
+      <div class="form-group"><label>Сообщение</label><textarea id="form-message" placeholder="Опишите ваш вопрос или пожелание..."></textarea></div>
+    </div>
+    <div class="check-row">
+      <input type="checkbox" id="agree" style="margin-top:2px;flex-shrink:0" required>
+      <label for="agree">Я даю согласие на обработку персональных данных</label>
+    </div>
+    <button type="submit" class="btn-orange">Отправить заявку</button>
+  </form>
+</div>
+
+<!-- QUICK LINKS -->
+<div class="quicklinks">
+  <a class="qlink" href="#appointment-form">
+    <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="28" height="20" rx="2"/><path d="M4 13l14 9 14-9"/></svg>
+    <span class="qlink-text">Записаться на приём</span>
+  </a>
+  <a class="qlink" href="#appointment-form">
+    <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="18" r="13"/><path d="M18 11v7l5 3"/></svg>
+    <span class="qlink-text">Записаться на приём</span>
+  </a>
+  <a class="qlink" href="#appointment-form">
+    <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l6 2 3 7-4 3a18 18 0 008 8l3-4 7 3 2 6a26 26 0 01-26-26z"/></svg>
+    <span class="qlink-text">Записаться на приём</span>
+  </a>
+</div>
+
+<!-- ABOUT -->
+<div class="section-light" id="about">
+  <div class="inner">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">О медицинском центре Nurpeis Doctor</h2>
+        <p class="body-text">Nurpeis Doctor — профессиональный медицинский центр, расположенный в городе Туркестан. Наша главная цель — предоставление качественных, безопасных и удобных медицинских услуг для населения.</p>
+        <p class="body-text">Клиника оснащена современным оборудованием, а в штате работают опытные специалисты. Мы стремимся обеспечить индивидуальный подход к каждому пациенту и эффективное лечение.</p>
+      </div>
+      <div>
+        <div class="feat-item">
+          <span class="feat-icon">🏥</span>
+          <span class="feat-text">Современное оборудование для диагностики и лечения</span>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">👨‍⚕️</span>
+          <span class="feat-text">Опытные специалисты с многолетним стажем работы</span>
+        </div>
+        <div class="feat-item">
+          <span class="feat-icon">💬</span>
+          <span class="feat-text">Удобная запись по телефону и через WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><span class="stat-num">23+</span><span class="stat-label">Лет опыта</span></div>
+    <div class="stat-item"><span class="stat-num">5000+</span><span class="stat-label">Пациентов</span></div>
+    <div class="stat-item"><span class="stat-num">1000+</span><span class="stat-label">Операций</span></div>
+    <div class="stat-item"><span class="stat-num">15+</span><span class="stat-label">Услуг</span></div>
+    <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">Клиника</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section-white" id="services">
+  <div class="inner">
+    <h2 class="section-title">Услуги и цены</h2>
+    <div class="services-grid">
+      <a class="service-card" href="services/bile-washing.html">
+        <h3>Промывание желчного пузыря</h3>
+        <p>Очищение печени и желчных путей, улучшение пищеварения</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">10 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/vip-circumcision.html">
+        <h3>VIP обрезание</h3>
+        <p>Современная хирургическая процедура с максимальным комфортом</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">25 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/surgeon-consultation.html">
+        <h3>Консультация хирурга</h3>
+        <p>Консультация врача высшей категории, к.м.н., доцента</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">7 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/ultrasound-complex.html">
+        <h3>УЗИ комплекс</h3>
+        <p>Комплексное ультразвуковое исследование внутренних органов</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">6 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/ultrasound-surgeon.html">
+        <h3>УЗИ + хирург</h3>
+        <p>Консультация хирурга с проведением ультразвукового исследования</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">12 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/ultrasound-hepatobiliary.html">
+        <h3>УЗИ гепатобилиопанкреатической области</h3>
+        <p>УЗИ печени, желчного пузыря, поджелудочной железы</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">5 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/ultrasound-kidneys.html">
+        <h3>УЗИ почек</h3>
+        <p>Ультразвуковое исследование почек</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">3 500 ₸</p>
+      </a>
+      <a class="service-card" href="services/ultrasound-bladder.html">
+        <h3>УЗИ мочевого пузыря</h3>
+        <p>УЗИ с определением остаточной мочи</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">4 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/ultrasound-prostate.html">
+        <h3>УЗИ простаты</h3>
+        <p>Трансабдоминальное УЗИ простаты и мочевого пузыря</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">5 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/ultrasound-scrotum.html">
+        <h3>УЗИ мошонки</h3>
+        <p>Ультразвуковое исследование мошонки</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">4 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/ultrasound-thyroid.html">
+        <h3>УЗИ щитовидной железы</h3>
+        <p>Ультразвуковое исследование щитовидной железы</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">4 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/ultrasound-soft-tissues.html">
+        <h3>УЗИ мягких тканей</h3>
+        <p>Ультразвуковое исследование мягких тканей</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">3 500 ₸</p>
+      </a>
+      <a class="service-card" href="services/sutures-ultrasound.html">
+        <h3>Снятие швов под контролем УЗИ</h3>
+        <p>Удаление швов с ультразвуковым контролем</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">4 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/sutures-removal.html">
+        <h3>Снятие швов</h3>
+        <p>Удаление хирургических швов</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">2 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/fluid-removal.html">
+        <h3>Удаление жидкости под УЗИ</h3>
+        <p>Аспирация жидкости шприцем под контролем УЗИ</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">12 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/ingrown-nail.html">
+        <h3>Вросший ноготь</h3>
+        <p>Удаление вросшего ногтя (1 палец)</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">6 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/wound-dressing-clean.html">
+        <h3>Перевязка чистой раны</h3>
+        <p>Перевязка послеоперационных ран</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">2 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/wound-dressing-dirty.html">
+        <h3>Перевязка загрязнённой раны</h3>
+        <p>Перевязка инфицированных ран</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">5 000 ₸</p>
+      </a>
+      <a class="service-card" href="services/tongue-tie.html">
+        <h3>Подрезание уздечки языка</h3>
+        <p>Хирургическое рассечение уздечки языка (по возрасту)</p>
+        <p style="color:var(--orange);font-weight:700;margin-top:8px">5 000–15 000 ₸</p>
+      </a>
+    </div>
+    <div class="center-btn">
+      <a href="#contact" class="btn-secondary">Записаться на приём</a>
+    </div>
+  </div>
+</div>
+
+<!-- DOCTORS -->
+<div class="section-white" id="doctors">
+  <div class="inner">
+    <h2 class="section-title">Наши врачи</h2>
+    <div class="reviews-grid">
+      <div class="review-card" style="text-align:center">
+        <div style="width:80px;height:80px;background:var(--blue);border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:700">НТ</div>
+        <h3 style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:4px">Нурпейс Тулежанов</h3>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:8px">Хирург высшей категории</p>
+        <p style="font-size:12px;color:var(--muted)">Кандидат медицинских наук, доцент</p>
+        <p style="font-size:12px;color:var(--muted);margin-top:8px">Стаж: 23 года</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="section-light" id="reviews">
+  <div class="inner">
+    <h2 class="section-title">Отзывы пациентов</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Отличный специалист! Очень внимательный и профессиональный. Всё объяснил чётко и доступно.</p>
+        <p class="review-author">Пациент &middot; 2024</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Благодарна доктору за профессионализм и человечность. Операция прошла успешно!</p>
+        <p class="review-author">Пациентка &middot; 2024</p>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Настоящий профессионал! Подробно рассказал о диагнозе и методах лечения.</p>
+        <p class="review-author">Пациент &middot; 2023</p>
+      </div>
+    </div>
+    <div style="background:#fff;padding:24px;border-radius:4px;margin-top:24px;border:1px solid var(--border)">
+      <h3 style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:16px">Оставить отзыв</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ваше имя (необязательно)</label>
+          <input type="text" id="review-name" placeholder="Или оставить анонимно">
+        </div>
+        <div class="form-group">
+          <label>Оценка</label>
+          <select id="review-rating">
+            <option value="5">★★★★★ Отлично</option>
+            <option value="4">★★★★☆ Хорошо</option>
+            <option value="3">★★★☆☆ Нормально</option>
+            <option value="2">★★☆☆☆ Плохо</option>
+            <option value="1">★☆☆☆☆ Очень плохо</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row full" style="margin-top:10px">
+        <div class="form-group">
+          <label>Ваш отзыв</label>
+          <textarea id="review-text" rows="3" placeholder="Напишите ваш отзыв о клинике..."></textarea>
+        </div>
+      </div>
+      <button type="button" class="btn-orange" style="margin-top:12px;width:auto;padding:10px 24px" onclick="submitReview()">Отправить отзыв</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section-white" id="contact">
+  <div class="inner">
+    <h2 class="section-title">Контакты и запись</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#25D366">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="contact-detail">
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/77053657285" target="_blank" style="color:var(--blue);font-weight:600">8 705 365 72 85</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#FF6B00">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.182c5.39 0 9.818 4.428 9.818 9.818S17.39 21.818 12 21.818 2.182 17.39 2.182 12 6.61 2.182 12 2.182z"/><path d="M12 6.182c-3.21 0-5.818 2.608-5.818 5.818s2.608 5.818 5.818 5.818 5.818-2.608 5.818-5.818-2.608-5.818-5.818-5.818zm0 2.182c2.015 0 3.636 1.621 3.636 3.636s-1.621 3.636-3.636 3.636-3.636-1.621-3.636-3.636 1.621-3.636 3.636-3.636z"/><circle cx="12" cy="12" r="1.455"/></svg>
+          </div>
+          <div class="contact-detail">
+            <h4>Карта</h4>
+            <p><a href="https://2gis.kz/turkestan/geo/70000001090887314" target="_blank" style="color:var(--blue);font-weight:600">Открыть на 2GIS</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <h4>Адрес</h4>
+            <p>г. Туркестан, ЖК Арман 37/1<br><small style="color:var(--muted)">Казахстан</small></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#062c73">☎</div>
+          <div class="contact-detail">
+            <h4>Телефон</h4>
+            <p><a href="tel:+77053657285" style="color:var(--text)">8 705 365 72 85</a><br><small style="color:var(--muted)">Пн–Сб: 7:00–14:00</small></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:var(--blue)">🕐</div>
+          <div class="contact-detail">
+            <h4>Режим работы</h4>
+            <p>Пн–Пт: 7:00–11:00<br>Сб: 7:00–14:00<br><small style="color:var(--muted)">Вс: выходной</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER SITEMAP -->
+<div class="footer-sitemap">
+  <div class="sitemap-grid">
+    <div class="sitemap-col">
+      <h4>Услуги</h4>
+      <a href="services/bile-washing.html">Промывание желчного пузыря</a>
+      <a href="services/vip-circumcision.html">VIP обрезание</a>
+      <a href="services/ultrasound-complex.html">УЗИ комплекс</a>
+      <a href="services/surgeon-consultation.html">Консультация хирурга</a>
+    </div>
+    <div class="sitemap-col">
+      <h4>УЗИ</h4>
+      <a href="services/ultrasound-hepatobiliary.html">УЗИ печени и желчного</a>
+      <a href="services/ultrasound-kidneys.html">УЗИ почек</a>
+      <a href="services/ultrasound-bladder.html">УЗИ мочевого пузыря</a>
+      <a href="services/ultrasound-prostate.html">УЗИ простаты</a>
+      <a href="services/ultrasound-thyroid.html">УЗИ щитовидной железы</a>
+    </div>
+    <div class="sitemap-col">
+      <h4>О клинике</h4>
+      <a href="#about">О нас</a>
+      <a href="#doctors">Наши врачи</a>
+      <a href="#contact">Запись на приём</a>
+    </div>
+    <div class="sitemap-col">
+      <h4>Контакты</h4>
+      <a href="#contact">Адрес</a>
+      <a href="tel:+77053657285">8 705 365 72 85</a>
+      <a href="https://wa.me/77053657285" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer-bottom">
+  <span class="footer-copy">&copy; 2025 Д-р Нурпейстулежанов. Все права защищены.</span>
+  <span class="footer-logo-text">DR. NURPEISTULEZHANOV</span>
+</div>
+
+<script>
+// Плавная прокрутка для якорных ссылок
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Установка минимальной даты для выбора
+document.addEventListener('DOMContentLoaded', function() {
+  const dateInput = document.getElementById('appointment-date');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
+});
+
+// Telegram Bot Token
+const BOT_TOKEN = '8756592309:AAHBpGVexgf0B7c_dZlyrko9ESwebzJmxZ8';
+const ADMIN_ID = '1924354010';
+
+// Отправка в Telegram
+async function sendToTelegram(text) {
+  try {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        chat_id: ADMIN_ID,
+        text: text,
+        parse_mode: 'HTML'
+      })
+    });
+  } catch (e) {
+    console.log('Telegram error:', e);
+  }
+}
+
+// Отправка формы записи на приём
+async function submitForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('form-name').value.trim();
+  const phone = document.getElementById('form-phone').value.trim();
+  const service = document.getElementById('form-service').value;
+  const date = document.getElementById('form-date').value;
+  const time = document.getElementById('form-time').value;
+  const message = document.getElementById('form-message').value.trim();
+  const agreed = document.getElementById('agree').checked;
+
+  // Проверка обязательных полей
+  if (!name) {
+    alert('Пожалуйста, введите ваше имя');
+    document.getElementById('form-name').focus();
+    return;
+  }
+  if (!phone) {
+    alert('Пожалуйста, введите номер телефона');
+    document.getElementById('form-phone').focus();
+    return;
+  }
+  if (!service) {
+    alert('Пожалуйста, выберите услугу');
+    document.getElementById('form-service').focus();
+    return;
+  }
+  if (!date) {
+    alert('Пожалуйста, выберите дату');
+    document.getElementById('form-date').focus();
+    return;
+  }
+  if (!time) {
+    alert('Пожалуйста, выберите время');
+    document.getElementById('form-time').focus();
+    return;
+  }
+  if (!agreed) {
+    alert('Пожалуйста, дайте согласие на обработку персональных данных');
+    return;
+  }
+
+  // Формируем сообщение
+  const tgMessage = `<b>📝 Новая заявка на приём</b>\n\n` +
+    `<b>👤 Имя:</b> ${name}\n` +
+    `<b>📞 Телефон:</b> ${phone}\n` +
+    `<b>🏥 Услуга:</b> ${service}\n` +
+    `<b>📅 Дата:</b> ${date}\n` +
+    `<b>🕐 Время:</b> ${time}\n` +
+    `<b>💬 Сообщение:</b> ${message || 'нет'}\n\n` +
+    `<i>Заявка с сайта Nurpeis Doctor</i>`;
+
+  // Отправляем в Telegram
+  await sendToTelegram(tgMessage);
+
+  // Также открываем WhatsApp для удобства
+  const waMessage = `📝 *Новая заявка на приём*\n\n👤 *Имя:* ${name}\n📞 *Телефон:* ${phone}\n🏥 *Услуга:* ${service}\n📅 *Дата:* ${date}\n🕐 *Время:* ${time}\n💬 *Сообщение:* ${message || 'нет'}`;
+  const waUrl = `https://wa.me/77053657285?text=${encodeURIComponent(waMessage)}`;
+  window.open(waUrl, '_blank');
+
+  // Очищаем форму
+  document.getElementById('appointment-form').reset();
+  alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
+}
+
+async function submitReview() {
+  const name = document.getElementById('review-name').value || 'Анонимно';
+  const rating = document.getElementById('review-rating').value;
+  const text = document.getElementById('review-text').value;
+
+  if (!text.trim()) {
+    alert('Пожалуйста, напишите текст отзыва');
+    return;
+  }
+
+  // Формируем звёздочки
+  const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+  const tgMessage = `<b>⭐ Новый отзыв</b>\n\n` +
+    `<b>👤 Имя:</b> ${name}\n` +
+    `<b>⭐ Оценка:</b> ${stars} (${rating}/5)\n` +
+    `<b>💬 Отзыв:</b> ${text}\n\n` +
+    `<i>Отзыв с сайта Nurpeis Doctor</i>`;
+
+  // Отправляем в Telegram
+  await sendToTelegram(tgMessage);
+
+  // Также открываем WhatsApp
+  const waMessage = `⭐ *Новый отзыв*\n\n👤 *Имя:* ${name}\n⭐ *Оценка:* ${stars} (${rating}/5)\n💬 *Отзыв:* ${text}`;
+  const waUrl = `https://wa.me/77053657285?text=${encodeURIComponent(waMessage)}`;
+  window.open(waUrl, '_blank');
+
+  document.getElementById('review-name').value = '';
+  document.getElementById('review-rating').value = '5';
+  document.getElementById('review-text').value = '';
+  alert('Спасибо за ваш отзыв!');
+}
+</script>
+
+<!-- AI Chat Widget -->
+<style>
+.chat-widget{position:fixed;bottom:20px;right:20px;z-index:1000;font-family:'Segoe UI',Arial,sans-serif}
+.chat-toggle{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue2));border:none;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;transition:transform 0.3s}
+.chat-toggle:hover{transform:scale(1.1)}
+.chat-toggle svg{width:28px;height:28px;fill:#fff}
+.chat-box{display:none;position:fixed;bottom:90px;right:20px;width:380px;max-height:500px;background:#fff;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.2);overflow:hidden;flex-direction:column}
+.chat-box.open{display:flex}
+.chat-header{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;padding:16px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.chat-header span{font-size:14px}
+.chat-close{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1}
+.chat-messages{flex:1;padding:16px;overflow-y:auto;max-height:350px;display:flex;flex-direction:column;gap:12px}
+.chat-messages .message{padding:12px 16px;border-radius:12px;font-size:13px;line-height:1.5;max-width:85%}
+.chat-messages .bot{background:var(--light);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-messages .user{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-messages .typing{color:var(--muted);font-style:italic}
+.chat-input{padding:12px;border-top:1px solid var(--border);display:flex;gap:8px}
+.chat-input input{flex:1;padding:12px;border:1px solid var(--border);border-radius:24px;outline:none;font-size:13px}
+.chat-input input:focus{border-color:var(--blue)}
+.chat-input button{width:40px;height:40px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.chat-input button svg{width:18px;height:18px;fill:#fff}
+.suggestions{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 12px}
+.suggestions button{background:var(--light);border:1px solid var(--border);padding:6px 12px;border-radius:16px;font-size:12px;cursor:pointer;transition:all 0.2s}
+.suggestions button:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+</style>
+
+<div class="chat-widget">
+  <button class="chat-toggle" onclick="toggleChat()">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.33.26 2.61.74 3.77l-1.42 4.04c-.39 1.1.08 2.33 1.08 2.83l2.96 1.48c.74.37 1.54.56 2.36.56.42 0 .84-.06 1.25-.17l3.11-.91c.65-.19 1.19-.62 1.48-1.18l1.41-2.72c.62-.02 1.22-.07 1.82-.07 5.52 0 10-4.48 10-10S17.52 2 12 2zm-2 15l-2-1.5 1.5-2.5L9 15l2-1.5L10 12l1.5-2.5L14 9l-1.5 2.5L14 15l-2 1.5-2-1.5-1.5 2.5z"/></svg>
+  </button>
+  <div class="chat-box" id="chatBox">
+    <div class="chat-header">
+      <span>🤖 Nurpeis AI — Консультант</span>
+      <button class="chat-close" onclick="toggleChat()">&times;</button>
+    </div>
+    <div class="suggestions">
+      <button onclick="sendMessage('Какие услуги есть?')">Какие услуги есть?</button>
+      <button onclick="sendMessage('Сколько стоит УЗИ?')">Сколько стоит УЗИ?</button>
+      <button onclick="sendMessage('Как записаться?')">Как записаться?</button>
+      <button onclick="sendMessage('Время работы')">Время работы</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message bot">Здравствуйте! Я AI-консультант медицинского центра Nurpeis Doctor. Чем могу помочь? Задайте вопрос о наших услугах или запишитесь на приём.</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Напишите ваш вопрос..." onkeypress="if(event.key==='Enter')sendUserMessage()">
+      <button onclick="sendUserMessage()">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Вставьте ваш OpenAI API ключ здесь
+const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY';
+
+function toggleChat() {
+  document.getElementById('chatBox').classList.toggle('open');
+}
+
+function addMessage(text, isUser) {
+  const messages = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'message ' + (isUser ? 'user' : 'bot');
+  div.textContent = text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function showTyping() {
+  const messages = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'message bot typing';
+  div.id = 'typing';
+  div.textContent = 'Печатает...';
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function hideTyping() {
+  const typing = document.getElementById('typing');
+  if (typing) typing.remove();
+}
+
+async function sendMessage(text) {
+  addMessage(text, true);
+  showTyping();
+
+  const services = {
+    'УЗИ комплекс': '6000 ₸',
+    'УЗИ почек': '3500 ₸',
+    'УЗИ мочевого пузыря': '4000 ₸',
+    'УЗИ простаты': '5000 ₸',
+    'УЗИ щитовидной железы': '4000 ₸',
+    'УЗИ мягких тканей': '3500 ₸',
+    'УЗИ гепатобилиопанкреатической области': '5000 ₸',
+    'УЗИ мошонки': '4000 ₸',
+    'VIP обрезание': '25000 ₸',
+    'Консультация хирурга': '7000 ₸',
+    'УЗИ + хирург': '12000 ₸',
+    'Промывание желчного пузыря': '10000 ₸',
+    'Снятие швов': '2000 ₸',
+    'Снятие швов под контролем УЗИ': '4000 ₸',
+    'Удаление жидкости под УЗИ': '12000 ₸',
+    'Вросший ноготь': '6000 ₸',
+    'Перевязка чистой раны': '2000 ₸',
+    'Перевязка загрязнённой раны': '5000 ₸',
+    'Подрезание уздечки языка': '5000-15000 ₸'
+  };
+
+  const systemPrompt = `Ты - дружелюбный AI-консультант медицинского центра "Nurpeis Doctor" в городе Туркестан, Казахстан.
+
+О клинике:
+- Адрес: г. Туркестан, ЖК Арман 37/1
+- Телефон: 8 705 365 72 85
+- WhatsApp: 8 705 365 72 85
+- Режим работы: Пн-Пт 7:00-11:00, Сб 7:00-14:00, Вс - выходной
+- Врач: Нурпейс Тулежанов - хирург высшей категории, кандидат медицинских наук, доцент, стаж 23 года
+
+Услуги и цены:
+${Object.entries(services).map(([name, price]) => `- ${name}: ${price}`).join('\n')}
+
+Правила:
+1. Отвечай кратко и по делу (2-3 предложения)
+2. Предлагай подходящие услуги исходя из симптомов/ситуации клиента
+3. Если не знаешь точного ответа - предложи позвонить или написать в WhatsApp
+4. Не используй сложные медицинские термины
+5. В конце предложения всегда добавляй призыв к действию (записаться, позвонить, написать)
+6. Если клиент хочет записаться - направляй его к форме записи на сайте`;
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: text }
+        ],
+        max_tokens: 200
+      })
+    });
+
+    hideTyping();
+
+    if (response.ok) {
+      const data = await response.json();
+      const reply = data.choices[0].message.content;
+      addMessage(reply, false);
+    } else {
+      addMessage('Извините, произошла ошибка. Попробуйте позвонить нам: 8 705 365 72 85 или написать в WhatsApp.', false);
+    }
+  } catch (error) {
+    hideTyping();
+    addMessage('Извините, произошла ошибка. Напишите нам в WhatsApp: 8 705 365 72 85', false);
+  }
+}
+
+function sendUserMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (text) {
+    sendMessage(text);
+    input.value = '';
+  }
+}
+</script>
+
+</body>
+</html>
